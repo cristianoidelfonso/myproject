@@ -1,0 +1,24 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #777;
+    letter-spacing: .1rem;
+}
+.form-login{
+    flex-basis: 450px;
+    box-shadow: 0em 0em .8em .5em rgba(0,0,0,.5);
+    border-radius: 3px;
+}
+.login-card .card-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    letter-spacing: .3rem;
+}
+.login-card .card-footer{
+    display: flex;
+    justify-content: flex-end;
+}

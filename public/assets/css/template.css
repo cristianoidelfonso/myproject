@@ -1,0 +1,430 @@
+html{
+   overflow: hidden;
+}
+body{
+   display: grid;
+   grid-template-columns: 2fr 15fr;
+   grid-template-rows: 3em 20fr 1fr;
+   grid-template-areas: 
+            "header header"
+            "sidebar content"
+            "sidebar footer";
+   height: 100vh;
+   margin: 0;
+   background-color: rgba(255, 255, 255, 1);
+}
+body.hide-sidebar{
+   grid-template-columns: 1fr;
+   grid-template-areas:"header""content""footer";
+}
+
+header.header{
+   grid-area: header;
+   display: inline-flex;
+   position: fixed !important;
+   width: 100% !important;
+   height: 3em !important;
+   /* background-color: #1976D2; */
+   background-color: #0A2342;
+   align-items: center;
+   z-index: 10;
+   box-shadow: 
+            0 2px 4px -2px rgba(0,0,0,.2),
+            0 4px 4px 0 rgba(0,0,0,.14),
+            0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+header.header a{
+   text-decoration: none;
+   margin-left: 2rem;
+}
+header.header .logo{
+   color: #FFF;
+   align-items: center;
+   justify-content: center;
+   font-size: 2rem;
+   flex-basis: 250px;
+   display: flex;
+   height: 3em !important;
+}
+header.header div.logo span.font-weight-light{
+   background-color: rgba(0,0,0,.2);
+}
+header.header .menu-toggle{
+   color: white;
+   cursor: pointer;
+   font-size: 1.5rem;
+}
+header.header .spacer{
+   flex-grow: 1;
+}
+header.header .dropdown{
+   position: relative;
+   height: 100%;
+   margin-right: .5rem;
+}
+header.header .dropdown:hover{
+   background-color: rgba(0,0,0,.1);
+}
+header.header .avatar{
+   height: 70%;
+   border-radius: 50%;
+   margin-left: 10px;
+}
+header.header .dropdown-button{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   font-size: 1rem;
+   color: #FFF;
+   cursor: pointer;
+}
+header.header .dropdown:hover .dropdown-content{
+   display: block;
+}
+header.header .dropdown-content{
+   display: none;
+   position: absolute;
+   min-width: 100%;
+   background-color: #F9F9F9;
+   padding: 15px 0;
+   z-index: 100;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+}
+header.header .dropdown-content ul{
+   list-style: none;
+   padding-left: 0;
+   margin-bottom: 0;
+}
+header.header .dropdown-content a{
+   display: flex;
+   align-items: center;
+   text-decoration: none;
+   color: #222;
+   padding: 7px;
+   font-size: 1.2rem;
+}
+header.header .dropdown-content a:hover{
+   background-color: rgba(0,0,0,.08);
+}
+/* Barra lateral */
+aside.sidebar{
+   grid-area: sidebar;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   box-shadow: -5px 0px 25px 1px rgba(0,0,0,.4);
+   /* background-color: rgba(0,0,0,0.1); */
+   background-color: #253D5B;
+   width: 10rem;
+}
+aside.sidebar .menu{
+   width: 100%;
+   flex-grow: 1;
+}
+aside.sidebar .menu ul.nav-list{
+   list-style: none;
+   padding: 0;
+   margin: 2em 0em;
+}
+aside.sidebar .menu li.nav-item{
+   padding: 10px 0px 10px 25px;
+   margin: 0;
+}
+aside.sidebar .menu li.nav-item:hover{
+   background-color: rgba(0,0,0,.2);
+}
+aside.sidebar .menu li.nav-item a{
+   font-size: 1.2rem;
+   color: #FFF;
+   text-decoration: none;
+}
+body.hide-sidebar aside.sidebar{
+   display: none;
+}
+aside.sidebar .sidebar-widgets{
+   position: sticky;
+   bottom: 3em;
+}
+aside.sidebar .sidebar-widget{
+   display: flex;
+   align-items: center;
+}
+aside.sidebar .sidebar-widget .icon{
+   font-size: 3.5rem;
+   margin: 2px 10px 2px 0px;
+}
+aside.sidebar .sidebar-widget .info{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-grow: 1;
+}
+aside.sidebar .info .main{
+   font-size: 2rem;
+}
+.division{
+   widows: 80%;
+   border: solid 1px #AAA;
+}
+
+@media(max-width: 534px){
+   header.header .dropdown{
+      background-color: chartreuse;
+   }
+   header.header .dropdown-button span{
+      font-size: 0.7rem;
+   }
+}
+/*################# Início Main ###################*/
+main.content{
+   grid-area: content;
+   margin: .3em;
+   padding: .2rem .8rem;
+   border-radius: .2rem;
+   /* box-shadow: 0 0 .8em .6em rgba(0,0,0,.5); */
+   height: 88.5vh;
+   overflow: auto;
+}
+main.content div.alert{
+   border: 1px solid #DC3545;
+   margin: 0rem;
+}
+main.content .content-title{
+   display: flex;
+   align-items: center;
+   padding: .5rem 1rem;
+   border-bottom: 1px solid #CCC;
+   margin-bottom: 1.1rem!important;
+}
+main.content .content-title .icon {
+   font-size: 3rem;
+}
+main.content .content-title h1 {
+   color: #444;
+   font-size: 1.8rem;
+   font-weight: 300;
+   margin: 0;
+}
+main.content .content-title h2 {
+   color: #888;
+   font-size: 1.2rem;
+   font-weight: 300;
+   margin: 0;
+}
+main.content .content-title div.message{
+   display: flex;
+   align-items: center;
+   padding-right: auto;
+   margin-left: 15%;
+}
+main.content .message{
+   display: flex;
+   align-items: center;
+   padding-right: auto;
+}
+main.content div.message a{
+   margin-right: 6rem;
+}
+main.content div.message .alert{
+   position: relative;
+   padding: .75rem 1.25rem;
+   margin-bottom: 0rem;
+   border: 1px solid transparent;
+   border-radius: .25rem;
+}
+main.content div.message form{
+   border: #1976D2 2px solid;
+   background-color: springgreen;
+   border-radius: .5rem;
+   margin: 0rem 0rem 0rem auto;
+}
+main.content div.message form.form-group label{
+   display: flex;
+   align-items: center;
+   margin: 0.5rem;
+}
+main.content div.message form.form-group label input.search{
+   width: 20rem;
+   border-radius: 0.3rem;
+}
+main.content div.message form.form-group i{
+   font-size: 2rem;
+   margin: 0rem .5rem;
+}
+.pessoal:hover{
+   text-decoration: none;
+   background-color: tomato;
+   color: white;
+   padding: .05rem 1rem;
+   border-radius: 4px;
+}
+@media (min-width: 767.98px){
+   main.content{
+      background-color: rgba(0,0,0,.0);
+   }
+}
+/*### Início Relatórios ###*/
+main.content div.summary-boxes {
+   background-color: white;
+   border: 3px solid red;
+}
+main.content div.summary-box{
+   border: 3px solid blue;
+   border-radius: .3em;
+   background-color: rgba(0,0,0,.5);
+   padding: .4em;
+   margin: .2em;
+}
+/*### Fim Relatórios ###*/
+main.content div.card{
+   background-color: rgba(0,0,0,.4);
+}
+main.content div.card fieldset{
+   border: 1px solid rgba(0,0,0,0.2);
+   border-radius: 5px;
+   padding: 0rem .5rem;
+   /* margin-top: .5rem; */
+}
+main.content div.card fieldset label.inicio{
+   display: flex;
+   align-items: center;
+}
+main.content div.card fieldset label.inicio span{
+   font-size: .8rem;
+}
+main.content div.card legend{
+   font-size: .7rem;
+   margin-left: 1rem;
+   font-weight: bold;
+   letter-spacing: .2rem;
+}
+main.content div.card div.card-header{
+   margin: 0px;
+}
+main.content div.card div.card-body{
+   font-size: 0.8rem;
+   letter-spacing: .15em;
+   font-weight: 600;
+   padding: .4rem;
+}
+main.content div.card div.card-body .form-control{
+   height: calc(1.75rem + 1px);
+   font-size: 0.9rem;
+   padding: 0rem .5rem;
+   letter-spacing: .15em;
+   font-weight: bold;
+}
+main.content div.card div.card-body fieldset #divIsAdmin{
+   padding: .5rem 1.5rem;
+}
+main.content div.card div.card-body fieldset #divIsAdmin label{
+   font-size: 1.2rem;
+}
+main.content div.card div.card-body fieldset #divIsAdmin span{
+   font-size: .7rem;
+}
+main.content div.card div.card-body fieldset #divIsAdmin input[type=checkbox] {
+   width: 2rem;
+   height: 2rem;
+   cursor: pointer;
+   margin-left: 2rem;
+}
+main.content div.card div.card-footer{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0rem 1rem;
+}
+main.content div.card div.card-body label.funcionario{
+   align-items: center;
+   display: flex;
+   background-color: rgba(0,0,0,.2);
+   border: 1px solid rgba(255, 255, 255, 0.6);
+   padding: 0rem .3rem;
+}
+main.content div.card div.card-footer button{
+   margin: 0rem 2rem;
+}
+main.content div.card div.card-body button{
+   margin: 0rem 1rem;
+   padding: .38rem 1.8rem;
+   letter-spacing: .1rem;
+}
+main.content form div.card-footer div.buttons{
+   display: flex;
+   justify-content: center;
+   padding: .3rem 0rem .3rem 0rem;
+}
+main.content form div.card-body div.buttons{
+   box-sizing: border-box;
+   display: flex;
+   justify-content: center;
+   padding: .2rem 0rem .2rem 0rem;
+}
+main.content center{
+   display: flex;
+   justify-content: center;
+   margin-top: 5rem;
+   padding: 1rem;
+   border: 1px solid #DC3545;
+}
+
+main.content div.scroll{
+   padding-top: .8rem;
+   font-size: .9rem;
+}
+
+main.content div.scroll div.dataTables_wrapper{
+   max-height: 48vh;
+}
+
+main.content div.scroll div.dataTables_wrapper#tabela_aluno_wrapper label{
+   max-height: 40vh;
+   margin-right: auto;
+   padding: 0em 1em;
+}
+
+main.content div.scroll div.dataTables_wrapper div.dataTables_filter input{
+   width: 20rem;
+   background-color: rgba(0,0,0,.4);
+   color: #000;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    white-space: nowrap;
+}
+/*############################################################*/
+/* Formatação das tabelas */
+
+
+/*==========*/
+/*############################################################*/
+footer.footer{
+   grid-area: footer;
+   display: flex;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+   padding-right: 20px;
+   font-size: 0.6rem;
+   /* background-color: rgba(1, 2, 7, 1); */
+   background-color: #0A2342;
+   color: #FFF;
+   letter-spacing: .1em;
+}
+
+.record{
+   font-size: 1rem;
+}
+.required{
+   border: 1px solid rgba(255, 0, 0, .5);
+   background-color:rgba(210, 115, 115, 0.15)
+}
+.ucwords { 
+   text-transform: capitalize; 
+}

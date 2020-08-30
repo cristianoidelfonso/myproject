@@ -1,0 +1,127 @@
+*{
+  box-sizing: border-box;
+}
+@page{
+    margin: 0px 0px 0px 0px !important;
+    padding: 0px 0px 0px 0px !important;
+}
+.row{
+    /* border-bottom: 1px solid rgba(0,0,0,0.5); */
+    margin-bottom: 1rem;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    /* padding: 5px; */
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.row input{
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.09);
+    border-radius: 4px;
+    /* height: calc(1.75rem + 1px); */
+    font-size: 0.8rem;
+}
+body{
+    background-color: transparent;
+}
+
+header.header{
+    position:fixed;
+    top: 0;
+    text-align: center;
+    background-color: yellowgreen;
+    height: 7rem;
+    padding: 1rem 0.5rem 0.2rem 0.5rem;
+}
+header.header img{
+    width: 100%;
+    padding-top: .8rem;
+    margin-left: 1.5rem;
+}
+main.content{
+    background-color: transparent;
+    padding: 0rem 2rem;
+    margin-top: 8.5rem;
+}
+main.content p{
+    color: #000;
+    text-align: justify;
+    margin: 2.5rem;
+    line-height: 1.5;
+}
+main.content p.ficha{
+    font-size: 1.3rem;
+    letter-spacing: .18rem;
+    background-color:rgba(120, 138, 155, 0.3);
+    margin: 0.2rem 0rem 1rem 0rem;
+    text-align: center;
+}
+main.content p.dec{
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: .18rem;
+    margin: 1rem 0rem 1rem 0rem;
+    padding: 4rem 0rem 4rem 0rem;
+}
+main.content div>p{
+    text-align: right;
+    margin: 7rem 5rem 3rem 1rem;
+}
+main.content div.assinatura{
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    margin-left: 10%;
+}
+main.content label{
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+main.content div.assinatura>p{
+    margin: 1rem;
+}
+main.content div.anotation{
+    height: 6rem;
+    border: 1px solid rgba(0,0,0,0.4);
+    padding-left: .5rem;
+}
+main.content input#nome, input#cpf, input#identidade{
+    font-weight: bold;
+    letter-spacing: .1rem;
+}
+footer.footer{
+    position:fixed;
+    bottom: 0;
+    text-align: center;
+    background-color: yellowgreen;
+    height: 7rem;
+    margin-bottom: 0rem;
+}
+footer.footer div.rodape{
+    text-align: center;
+    border: 1px solid rgb(0,0,0,0.6);
+    margin: .3rem;
+    padding: .3rem 0rem;
+}
+
+
+

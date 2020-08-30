@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        var arr1 = "john".split(''); //separa a string para um array
+        console.log(arr1);
+
+        // O método reverse transpõe os elementos do objeto array no mesmo lugar,
+        // mutando o array, e retornando uma referência para o mesmo.
+        var arr2 = arr1.reverse(); 
+        console.log(arr1 +" , "+ arr2);
+
+        var arr3 = "jones".split(''); //separa a string para um array
+
+        arr2.push(arr3); // adiciona o arr3 como um novo elemento do arr2
+
+        console.log(arr1 + " , " + arr2);
+
+        console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+        console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+
+        console.log("\n");
+
+        console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(0));
+        console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(0));
+
+        console.log("\n\n");
+
+        var teste;
+        console.log(typeof teste);
+        if (typeof teste !== 'undefined') {
+            console.log("Variavel teste existe!");
+        }else{
+            console.log("Variavel teste não existe!");
+        }
+        
+        if(window.teste){
+            console.log("\nExiste\n");
+        }
+
+
+    </script>
+</head>
+<body>
+
+    <ul>
+        <li id="1">Pera</li>
+        <li id="2">Uva</li>
+        <li id="3">Maça</li>
+    </ul>
+    
+    <script>
+        $(document).ready(function () {
+            $("#3").css("color", "red");
+            console.log($('#3').text());
+        });
+
+        console.log($("li").last().text());
+
+        $("ul").append("<li>Kiwi</li>");
+
+        $("ul").append("<li>Salada Mista</li>");
+
+        var soma = 10+10+"20";
+        $("ul").append("<li>" + soma + "</li>");
+    </script>
+    
+</body>
+</html>
