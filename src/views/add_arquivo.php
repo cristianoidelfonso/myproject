@@ -12,7 +12,6 @@
     </div>
     <div class="scroll">
     
-
     <?php //loadView('tabela_curso', ['cursos' => $cursos]); ?></div>
 
 </main>
