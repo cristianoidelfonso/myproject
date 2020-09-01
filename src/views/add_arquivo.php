@@ -6,10 +6,17 @@
         
         include(TEMPLATE_PATH . "/messages.php");
     ?>
-
+    
     <div class="message">
         <a class="btn btn-lg btn-primary" href="#">Add</a>
     </div>
+    
+    </br>
+    
+    <div class="message">
+        <a class="btn btn-lg btn-primary" href="alunos.php">Voltar</a>
+    </div>
+
     <div class="scroll">
     
     <?php //loadView('tabela_curso', ['cursos' => $cursos]); ?></div>

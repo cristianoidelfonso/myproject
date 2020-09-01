@@ -131,7 +131,7 @@
                                         <i class="icofont-print"></i>
                                     </button>
                                 </form>
-                                <form action="add_arquivo.php" method="post" target="_blank">
+                                <form action="add_arquivo.php" method="post">
                                     <input type="text" name="id_add_arquivo" value="${data['codigo']}" hidden>
                                     <button class="btn btn-primary mr-2 update" title="Adiciona arquivo">
                                         <i class="icofont-attachment"></i>
