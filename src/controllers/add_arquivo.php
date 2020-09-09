@@ -20,3 +20,4 @@
     // $cursos = Curso::get();
 
     loadTemplateView('add_arquivo', ['arquivo1' => 'Nada no arquivo 1','exception' => $exception]);
+    // loadTemplateView('modal', ['arquivo1' => 'Nada no arquivo 1','exception' => $exception]);

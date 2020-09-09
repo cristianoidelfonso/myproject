@@ -15,12 +15,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <title>Cadastro de Alunos</title>
+    
     <!-- JQuery 3.3.1 -->
     <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
     <script type="text/javascript" language="javascript">
         window.history.forward(0);
     </script>
+
 </head>
+
 <body>
     <header class="header">
         <a href="index.php">
