@@ -44,7 +44,7 @@
                     <input type="hidden" name="id_aluno" value="<?php echo $id_aluno ?>"/>
                     Foto de exibição:<br />
                     <input type="file" name="foto" /><br /><br />
-                    <input type="submit" name="cadastrar" value="Cadastrar" />
+                    <input type='submit' name='cadastrar' value='Cadastrar' />
                 </form>
             </div>
         </div>

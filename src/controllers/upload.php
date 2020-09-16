@@ -3,10 +3,6 @@
     session_start();
     requireValidSession();
 
-    // echo '<pre>';
-    // print_r($_POST);
-    // echo '</pre>';
-
     $id_aluno = $_POST['id_aluno']; 
     $alunoData = [];
 
@@ -15,10 +11,6 @@
 
         $aluno = Aluno::getOne(['codigo' => $id_aluno], 'codigo,nome,cpf,foto,dataNasc,sexo,nomeMae');
         $alunoData = $aluno->getValues();
-
-        echo '<pre>';
-        print_r($alunoData);
-        echo '</pre>';
         
         // Recupera os dados dos campos
         $foto = $_FILES["foto"];
