@@ -2,7 +2,7 @@
     class Aluno extends Model {
         protected static $tableName = 'aluno';
         protected static $columns = [
-            'codigo','nome','dataNasc','sexo','raca','cpf','identidade','certNasc','naturalidade','escolaridade',
+            'codigo','nome','foto','dataNasc','sexo','raca','cpf','identidade','certNasc','naturalidade','escolaridade',
             'nomeMae','nomePai','logradouro','numero','bairro','cidade','estado','cep',
             'telefone','celular','trabalha','profissao','curso','email','senha','horario',
             'dataInicio','dias','possuiPC','conhecInfor','necessidadeEspecial','sala',

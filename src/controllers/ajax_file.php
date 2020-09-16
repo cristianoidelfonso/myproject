@@ -38,6 +38,7 @@
         $data[] = array(
     		"codigo"=>$row['codigo'],
     		"nome"=>$row['nome'],
+    		"foto"=>$row['foto'],
     		"email"=>$row['email'],
     		"cpf"=>$row['cpf'],
     		"instituicao"=>strtoupper($row['instituicao']),

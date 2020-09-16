@@ -29,6 +29,7 @@
             <tr>
                 <th>Codigo</th>
                 <th>Nome</th>
+                <th>Foto</th>
                 <th>CPF</th>
                 <th>E-mail</th>
                 <th>Nome da mãe</th>
@@ -92,6 +93,9 @@
                 },
                 {
                     data: "nome"
+                },
+                {
+                    data: "foto"
                 },
                 {
                     data: "cpf"

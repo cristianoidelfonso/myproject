@@ -1,7 +1,14 @@
 <?php
 
+    session_start();
+    requireValidSession();
+
     // Se o usuário clicou no botão cadastrar efetua as ações
-    if (isset($_POST['cadastrar'])) {
+    if (isset($_POST['cadastrar']) && isset($_POST['id_aluno'])) {
+
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
         
         // Recupera os dados dos campos
         $foto = $_FILES["foto"];
