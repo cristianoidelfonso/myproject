@@ -3,19 +3,29 @@
     session_start();
     requireValidSession();
 
+    // echo '<pre>';
+    // print_r($_POST);
+    // echo '</pre>';
+
+    $id_aluno = $_POST['id_aluno']; 
+    $alunoData = [];
+
     // Se o usuário clicou no botão cadastrar efetua as ações
-    if (isset($_POST['cadastrar']) && isset($_POST['id_aluno'])) {
+    if (isset($_POST['cadastrar'])) {
+
+        $aluno = Aluno::getOne(['codigo' => $id_aluno], 'codigo,nome,cpf,foto,dataNasc,sexo,nomeMae');
+        $alunoData = $aluno->getValues();
 
         echo '<pre>';
-        print_r($_POST);
+        print_r($alunoData);
         echo '</pre>';
         
         // Recupera os dados dos campos
         $foto = $_FILES["foto"];
 
-        echo '<pre>';
-        print_r($foto);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($foto);
+        // echo '</pre>';
         
         // Se a foto estiver sido selecionada
         if (!empty($foto["name"])) {
@@ -88,4 +98,10 @@
     }
 
 ?>
-<div class="message"><a class="btn btn-lg btn-primary" href="add_arquivo.php">Voltar</a></div>
+<form action="add_arquivo.php" method="post">
+    <input type="hidden" name="id_add_arquivo" value="<?php echo $id_aluno?>">
+    <div class="message">
+        <input type="submit" name="id" value="<?php echo 'Voltar'?>">
+    </div>
+</form>
+<!-- <div class="message"><a class="btn btn-lg btn-primary" href="add_arquivo.php?id_aluno=<?php //echo $id_aluno?>">Voltar</a></div> -->

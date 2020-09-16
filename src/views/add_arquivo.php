@@ -30,6 +30,7 @@
         include(TEMPLATE_PATH . "/messages.php");
 
         if(isset($_POST['id_add_arquivo'])){
+            $id_aluno = $_POST['id_add_arquivo'];
         
     ?>
     <!-- <div class="message"><a class="btn btn-lg btn-primary" href="#">Add</a></div> -->
@@ -40,7 +41,7 @@
         <div class="container background">
             <div class="row form-group">
                 <form enctype="multipart/form-data" action="upload.php" method="post" name="cadastro-arquivo">
-                    <input type="hidden" name="id_aluno" value="<?php echo $_POST['id_add_arquivo']?>"/>
+                    <input type="hidden" name="id_aluno" value="<?php echo $id_aluno ?>"/>
                     Foto de exibição:<br />
                     <input type="file" name="foto" /><br /><br />
                     <input type="submit" name="cadastrar" value="Cadastrar" />
@@ -49,6 +50,6 @@
         </div>
     </div>
     
-    <?php }?>
+    <?php } ?>
 
 </main>
