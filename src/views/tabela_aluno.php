@@ -22,14 +22,21 @@
     }
 </style>
 
+<?php 
+    // $imagemPath = $alunos[0]->foto; 
+    // echo $imagemPath . '<br>'; 
+    // echo '<img src="' . $imagemPath . '" width="50" height="50"/>';
+?>
+
 <div class="table">
+    
     <!-- Table -->
     <table id='tabela_aluno' class='display dataTable'>
         <thead>
             <tr>
                 <th>Codigo</th>
-                <th>Nome</th>
                 <th>Foto</th>
+                <th>Nome</th>
                 <th>CPF</th>
                 <th>E-mail</th>
                 <th>Nome da mãe</th>
@@ -88,18 +95,19 @@
                 "dataType": "json",
                 "url": "ajax_file.php",
             },
-            'columns': [{
-                    data: "codigo"
+            "columns": [
+                {   data: "codigo" },
+                {   
+                    data: "path",
+                    "render": function (data) {
+                        resultado = data.replace(",", "/");
+                        return `<div class="bg-primary">
+                                    <img src="src/uploads/fotos/${resultado}" class="avatar" width="50" height="50"/>
+                                </div>`;
+                    }
                 },
-                {
-                    data: "nome"
-                },
-                {
-                    data: "foto"
-                },
-                {
-                    data: "cpf"
-                },
+                {   data: "nome" },
+                {   data: "cpf" },
                 {
                     data: null,
                     "render": function(data) {
@@ -109,9 +117,7 @@
                                     </form>`
                     }
                 },
-                {
-                    data: "nomeMae"
-                },
+                {   data: "nomeMae" },
                 {
                     //data: "instituicao"
                     data: null,
@@ -126,31 +132,31 @@
                     "render": function(data) {
                         return `<div style="display: flex;">
                                 <a href="save_aluno.php?update=${data['codigo']}"
-                                    class="btn btn-warning mr-2 update" title="Editar">
+                                    class="btn btn-light mr-1 update" title="Editar">
                                         <i class="icofont-edit"></i>   
                                 </a>
                                 <form action="print.php" method="post" target="_blank">
                                     <input type="text" name="id_print" value="${data['codigo']}" hidden>
-                                    <button class="btn btn-primary mr-2 update" title="Imprimir">
+                                    <button class="btn btn-light mr-1 update" title="Imprimir">
                                         <i class="icofont-print"></i>
                                     </button>
                                 </form>
                                 <form action="add_arquivo.php" method="post">
                                     <input type="text" name="id_add_arquivo" value="${data['codigo']}" hidden>
-                                    <button class="btn btn-primary mr-2 update" title="Adiciona arquivo">
+                                    <button class="btn btn-light mr-1 update" title="Adiciona arquivo">
                                         <i class="icofont-attachment"></i>
                                     </button>
                                 </form>
-                                <?php if ($user->isAdmin) : ?> 
+                                <?php //if ($user->isAdmin) : ?> 
                                 <a href="?delete=${data['codigo']}" 
-                                    class="btn btn-danger rounded-circle mr-2 update" title="Excluir">
+                                    class="btn btn-light rounded-circle mr-1 update" title="Excluir">
                                     <i class="icofont-trash"></i>
                                 </a>
-                                <?php endif ?>
+                                <?php //endif ?>
                                 </div>`
                     }
                 }
-            ],
+            ]
         });
 
         $("input[type=search]").focus();
@@ -158,9 +164,9 @@
 </script>
 
 
-<!--  
+ 
 
-    
+<!--    
 <script>
     $(document).ready(function () {
         $('#tabela_aluno').DataTable( {
@@ -197,9 +203,11 @@
             },
             'columns': [
                 { data: 'codigo' },
+                { data: 'foto' },
                 { data: 'nome' },
                 { data: 'cpf' },
                 { data: 'email' },
+                { data: 'instituicao' },
                 { data: 'nomeMae' },
             ]
 
@@ -213,6 +221,7 @@
         <thead>
             <tr>
             <th class="text-center">ID</th>
+            <th class="text-center">Foto</th>
             <th class="text-center">Nome</th>
             <th class="text-center">CPF</th>
             <th class="text-center">Email</th>
@@ -224,6 +233,7 @@
         <?php foreach ($alunos as $aluno) : ?>
                 <tr>
                     <td class="text-center"><?= $aluno->codigo ?></td>
+                    <td class="text-center"><img src="<?= $aluno->foto ?>"></td>
                     <td class="text-center"><?= $aluno->nome ?></td>
                     <td class="text-center"><?= $aluno->cpf ?></td>
                     <td class="text-center">
@@ -232,6 +242,7 @@
                         </a>
                     </td>
                     <td class="text-center"><?= $aluno->nomeMae ?></td>
+                    <td class="text-center"><?= $aluno->intituicao ?></td>
                     <td class="text-center">
                         <a href="save_aluno.php?update=<?= $aluno->codigo ?>" 
                             class="btn btn-warning rounded-circle mr-2" title="Editar">

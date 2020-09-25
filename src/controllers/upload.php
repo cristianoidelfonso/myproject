@@ -8,27 +8,19 @@
 
     // Se o usuário clicou no botão cadastrar efetua as ações
     if (isset($_POST['cadastrar'])) {
-
+    
         // Conexão com o banco de dados
         $conn = new PDO("mysql:dbname=db_uaitec;host=localhost","root","") 
                 or die("Problemas na conexão com o banco de dados.");
 
-        // echo ($conn) ? 'Conexão OK!' : 'Falha na conexão';
-
         $aluno = Aluno::getOne(['codigo' => $id_aluno], 'codigo,nome,cpf,foto,dataNasc,sexo,nomeMae');
         $alunoData = $aluno->getValues();
-
-        var_dump($alunoData);
-        
+            
         // Recupera os dados dos campos
-        $foto = $_FILES["foto"];
+        $foto = $_FILES['foto']; 
 
-        echo '<pre>';
-        print_r($foto);
-        echo '</pre>';
-        
         // Se a foto estiver sido selecionada
-        if (!empty($foto["name"])) {
+        if (!empty($foto['name'])) {
             
             // Largura máxima em pixels
             $largura = 1500;
@@ -38,20 +30,20 @@
             $tamanho = 10000;
             $error = array();
             // Verifica se o arquivo é uma imagem
-            if(!preg_match("/^image\/(pjpeg|jpeg|jpg|png|gif|bmp)$/", $foto["type"])){
-                $error[1] = "Isso não é uma imagem.";
+            if(!preg_match("/^image\/(pjpeg|jpeg|jpg|png|gif|bmp)$/", $foto['type'])){
+                $error[1] = 'Isso não é uma imagem.';
             } 
         
             // Pega as dimensões da imagem
-            $dimensoes = getimagesize($foto["tmp_name"]);
+            $dimensoes = getimagesize($foto['tmp_name']);
         
             // Verifica se a largura da imagem é maior que a largura permitida
             if($dimensoes[0] > $largura) {
-                $error[2] = "A largura da imagem não deve ultrapassar ".$largura." pixels";
+                $error[2] = 'A largura da imagem não deve ultrapassar '.$largura.' pixels';
             }
             // Verifica se a altura da imagem é maior que a altura permitida
             if($dimensoes[1] > $altura) {
-                $error[3] = "Altura da imagem não deve ultrapassar ".$altura." pixels";
+                $error[3] = 'Altura da imagem não deve ultrapassar '.$altura.' pixels';
             }
             
             // Verifica se o tamanho da imagem é maior que o tamanho permitido
@@ -62,40 +54,50 @@
             if (count($error) == 0) {
             
                 // Pega extensão da imagem
-                preg_match("/\.(gif|bmp|png|jpg|pjpeg|jpeg){1}$/i", $foto["name"], $ext);
+                preg_match("/\.(gif|bmp|png|jpg|pjpeg|jpeg){1}$/i", $foto['name'], $ext);
                 // Gera um nome único para a imagem
                 $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
-                
+    
                 // Caminho de onde ficará a imagem
-                //mkdir(dirname(__FILE__,2).'/uploads/fotos/',0755); // Criando o diretorio /uploads/fotos/
-                if (is_dir(dirname(__FILE__,2).'/uploads/fotos/')){
-                    chdir(dirname(__FILE__,2).'/uploads/fotos/'); // Acessa o diretorio /uploads/fotos/
-                    mkdir($alunoData['cpf'] .'/',0755); // Criando o diretorio /uploads/fotos/cpf_aluno/
-                }
-                
-                if (is_dir($alunoData['cpf'])) {
-                    chdir($alunoData['cpf']); // Acessa o diretorio /uploads/fotos/cpf_aluno/
+                // mkdir(dirname(__FILE__,2).'/uploads/fotos/',0777); // Criando o diretorio /uploads/fotos/
+                if (is_dir(dirname(__DIR__).'/uploads/fotos/')){
+                    chmod (dirname(__DIR__)."/uploads/fotos/", 0777);
+                    chdir(dirname(__DIR__).'/uploads/fotos/'); // Acessa o diretorio /uploads/fotos/
+
+                    if( !file_exists($alunoData['cpf']) ){ // Criando o diretorio /uploads/fotos/cpf_aluno/
+                        mkdir($alunoData['cpf'] .'/',0777); // Criando o diretorio /uploads/fotos/cpf_aluno/
+                    }    
                 }
 
-                chdir(dirname(__FILE__,3).'/public');
+                chdir(dirname(__DIR__,2).'/public');
 
-                $caminho_imagem = dirname(__FILE__,2).'/uploads/fotos/'.$alunoData['cpf'].'/'.$nome_imagem;
-                
-                // Faz o upload da imagem para seu respectivo caminho
-                move_uploaded_file($foto["tmp_name"], $caminho_imagem);
-                die;
+                $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.$alunoData['cpf'].'/'.$nome_imagem;
+
+    // // Transformando foto em dados (binário)
+    // $conteudo = file_get_contents($foto['tmp_name']);
+
+    // // Preparando comando
+    // $stmt = $conn->prepare("UPDATE aluno SET foto=:CONTEUDO WHERE codigo=:CODIGO AND cpf=:CPF");
+    // $stmt->bindParam(':CONTEUDO', $conteudo, PDO::PARAM_LOB);
+    // $stmt->bindParam(":CODIGO",$alunoData['codigo'], PDO::PARAM_INT);
+    // $stmt->bindParam(":CPF",$alunoData['cpf'], PDO::PARAM_STR);
+
                 // Insere os dados no banco
-                $stmt = $conn->prepare("INSERT INTO usuarios (id,nome,email,foto) VALUES (NULL,:NOME,:EMAIL,:NOME_IMAGEM)");
+                $stmt = $conn->prepare("UPDATE aluno SET foto=:NOME_IMAGEM WHERE codigo=:CODIGO AND cpf=:CPF");
 
-                $stmt->bindParam(":NOME",$nome);
-                $stmt->bindParam(":EMAIL",$email);
+                // $stmt->bindParam(":NOME_IMAGEM",$caminho_imagem);
                 $stmt->bindParam(":NOME_IMAGEM",$nome_imagem);
+                $stmt->bindParam(":CODIGO",$alunoData['codigo']);
+                $stmt->bindParam(":CPF",$alunoData['cpf']);
                 
                 // Se os dados forem inseridos com sucesso
                 if ($stmt->execute()){
-                    echo "Você foi cadastrado com sucesso.";
-                    header("Refresh: 3;url=index.php");
+                    // Faz o upload da imagem para seu respectivo caminho
+                    move_uploaded_file($foto['tmp_name'], $caminho_imagem);
+                    echo 'Foto do aluno atualizada com sucesso';
+                    header('Refresh: 3; url=/');
                 }else{
+                    echo 'ERROR<br>';
                     die(print_r($stmt->errorInfo(), true));
                 }
             }
@@ -103,7 +105,7 @@
             // Se houver mensagens de erro, exibe-as
             if (count($error) != 0) {
                 foreach ($error as $erro) {
-                    echo $erro . "<br />";
+                    echo $erro . '<br />';
                 }
             }
         }

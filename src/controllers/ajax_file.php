@@ -37,12 +37,14 @@
     while ($row = mysqli_fetch_assoc($empRecords)) {
         $data[] = array(
     		"codigo"=>$row['codigo'],
-    		"nome"=>$row['nome'],
     		"foto"=>$row['foto'],
+    		"nome"=>$row['nome'],
     		"email"=>$row['email'],
     		"cpf"=>$row['cpf'],
     		"instituicao"=>strtoupper($row['instituicao']),
-    		"nomeMae"=>$row['nomeMae'],
+            "nomeMae"=>$row['nomeMae'],
+
+            "path" => [ $row['cpf'],$row['foto'] ],
         );
     }
 

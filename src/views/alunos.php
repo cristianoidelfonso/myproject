@@ -5,8 +5,10 @@
         renderTitle('Cadastro de Alunos','Mantenha os dados dos alunos atualizados','icofont-group-students');
         
         include(TEMPLATE_PATH . "/messages.php");
+    
     ?>
     
+
     <div class="scroll"><?php loadView('tabela_aluno', ['alunos' => $alunos, 'user' => $user] ); ?></div>
 
 </main>

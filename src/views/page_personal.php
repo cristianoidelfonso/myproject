@@ -4,7 +4,8 @@
 
     // isset($aluno) ? var_dump($aluno) : "Nada aqui";
 
-    $a = $aluno[0];
+    // $a = $aluno[0];
+    $a = $aluno;
 
     include(TEMPLATE_PATH . "/messages.php");
 
@@ -95,4 +96,5 @@
             <a href="decMatricula.php?decMat=<?= $a->codigo ?>" target="_blank" class="btn btn-outline-info">Declaração de matrícula</a>
             <a href="declaracao.php?dec=<?= $a->codigo ?>" target="_blank" class="btn btn-outline-info">Declaração</a>
         </div>
+
 </main>
