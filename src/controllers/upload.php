@@ -56,22 +56,33 @@
                 // Pega extensão da imagem
                 preg_match("/\.(gif|bmp|png|jpg|pjpeg|jpeg){1}$/i", $foto['name'], $ext);
                 // Gera um nome único para a imagem
-                $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
-    
+                $nome_imagem = md5(uniqid(time())) . "." .strtolower($ext[1]);
+               
                 // Caminho de onde ficará a imagem
                 // mkdir(dirname(__FILE__,2).'/uploads/fotos/',0777); // Criando o diretorio /uploads/fotos/
                 if (is_dir(dirname(__DIR__).'/uploads/fotos/')){
                     chmod (dirname(__DIR__)."/uploads/fotos/", 0777);
                     chdir(dirname(__DIR__).'/uploads/fotos/'); // Acessa o diretorio /uploads/fotos/
-
-                    if( !file_exists($alunoData['cpf']) ){ // Criando o diretorio /uploads/fotos/cpf_aluno/
-                        mkdir($alunoData['cpf'] .'/',0777); // Criando o diretorio /uploads/fotos/cpf_aluno/
-                    }    
+                    
+                    $dir_aluno = preg_replace("(\.|\-)","",$alunoData['cpf']);
+                    
+                    if( !file_exists($dir_aluno) ){ // Criando o diretorio /uploads/fotos/cpf_aluno/
+                        mkdir($dir_aluno, 0777); // Criando o diretorio /uploads/fotos/cpf_aluno/
+                    }else{
+                        $linhas = scandir($dir_aluno);
+                        if(sizeof($linhas) != 0){
+                            foreach ($linhas as $linha) {
+                                $arq = dirname(__FILE__, 2).'/uploads/fotos/'.$dir_aluno.'/'.$linha;
+                                unlink($arq) . '<br>' . PHP_EOL;
+                            }
+                        }
+                    }
                 }
-
+    
                 chdir(dirname(__DIR__,2).'/public');
 
-                $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.$alunoData['cpf'].'/'.$nome_imagem;
+                // $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.preg_replace("(\.|\-)", "", $alunoData['cpf']).'/'.$nome_imagem;
+                $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.$dir_aluno.'/'.$nome_imagem;
 
     // // Transformando foto em dados (binário)
     // $conteudo = file_get_contents($foto['tmp_name']);

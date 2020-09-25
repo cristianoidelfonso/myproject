@@ -22,12 +22,6 @@
     }
 </style>
 
-<?php 
-    // $imagemPath = $alunos[0]->foto; 
-    // echo $imagemPath . '<br>'; 
-    // echo '<img src="' . $imagemPath . '" width="50" height="50"/>';
-?>
-
 <div class="table">
     
     <!-- Table -->
@@ -37,9 +31,9 @@
                 <th>Codigo</th>
                 <th>Foto</th>
                 <th>Nome</th>
-                <th>CPF</th>
                 <th>E-mail</th>
-                <th>Nome da mãe</th>
+                <th>CPF</th>
+                <!-- <th>Nome da mãe</th> -->
                 <th>Instituição</th>
                 <th class="text-center">Ações</th>
             </tr>
@@ -100,14 +94,15 @@
                 {   
                     data: "path",
                     "render": function (data) {
-                        resultado = data.replace(",", "/");
+                        var resultado =  data.toString().replace(",", "/");
+                        // return `<span class="bg-primary">${resultado}<br></span>`;
+                        // return `<img class="img-fluid" width="50" height="50"src="${resultado}">`;
                         return `<div class="bg-primary">
-                                    <img src="src/uploads/fotos/${resultado}" class="avatar" width="50" height="50"/>
+                                    <img src="/assets/img/uploads/fotos/${resultado}" width="50" height="50"/>
                                 </div>`;
                     }
                 },
                 {   data: "nome" },
-                {   data: "cpf" },
                 {
                     data: null,
                     "render": function(data) {
@@ -117,7 +112,8 @@
                                     </form>`
                     }
                 },
-                {   data: "nomeMae" },
+                {   data: "cpf" },
+                // {   data: "nomeMae" },
                 {
                     //data: "instituicao"
                     data: null,

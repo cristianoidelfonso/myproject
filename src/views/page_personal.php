@@ -97,4 +97,10 @@
             <a href="declaracao.php?dec=<?= $a->codigo ?>" target="_blank" class="btn btn-outline-info">Declaração</a>
         </div>
 
+        <div style="width: 200px; height: 200px; border: 1px solid;">
+            <?php 
+                echo "<img src='{$a->cpf}/{$a->foto}'>";
+            ?>
+        </div>
+
 </main>
