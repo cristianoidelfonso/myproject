@@ -99,7 +99,8 @@
 
         <div style="width: 200px; height: 200px; border: 1px solid;">
             <?php 
-                echo "<img src='{$a->cpf}/{$a->foto}'>";
+                $path = preg_replace("(\.|\-)","",$a->cpf);
+                echo "<img src='./uploads/fotos/{$path}/{$a->foto}'>";
             ?>
         </div>
 

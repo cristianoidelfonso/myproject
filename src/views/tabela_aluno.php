@@ -90,16 +90,23 @@
                 "url": "ajax_file.php",
             },
             "columns": [
-                {   data: "codigo" },
+                {   data: "codigo",  
+                    "render" : function (data){
+                        return `<h5 class="text-center">${data}</h5>`;
+                    }
+                },
                 {   
                     data: "path",
                     "render": function (data) {
                         var resultado =  data.toString().replace(",", "/");
-                        // return `<span class="bg-primary">${resultado}<br></span>`;
-                        // return `<img class="img-fluid" width="50" height="50"src="${resultado}">`;
-                        return `<div class="bg-primary">
-                                    <img src="/assets/img/uploads/fotos/${resultado}" width="50" height="50"/>
-                                </div>`;
+                        var arr = resultado.split('/');
+                        if(arr[1] !== ''){
+                            return `<div class="">
+                                        <img width="80px" height="80px" src="./uploads/fotos/${resultado}"/>
+                                    </div>`;
+                        }else{
+                            return  `<span class="bg-light text-center">Sem Foto</span>`;
+                        }
                     }
                 },
                 {   data: "nome" },

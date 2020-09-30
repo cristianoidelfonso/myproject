@@ -44,7 +44,7 @@
     		"instituicao"=>strtoupper($row['instituicao']),
             "nomeMae"=>$row['nomeMae'],
 
-            "path" => [ preg_replace("(\.|\-)", "", $row['cpf']),$row['foto'] ],
+            "path" => [ preg_replace("(\.|\-)", "", $row['cpf']), $row['foto'] ],
         );
     }
 

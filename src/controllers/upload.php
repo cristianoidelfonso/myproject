@@ -57,32 +57,37 @@
                 preg_match("/\.(gif|bmp|png|jpg|pjpeg|jpeg){1}$/i", $foto['name'], $ext);
                 // Gera um nome único para a imagem
                 $nome_imagem = md5(uniqid(time())) . "." .strtolower($ext[1]);
-               
+
                 // Caminho de onde ficará a imagem
                 // mkdir(dirname(__FILE__,2).'/uploads/fotos/',0777); // Criando o diretorio /uploads/fotos/
-                if (is_dir(dirname(__DIR__).'/uploads/fotos/')){
-                    chmod (dirname(__DIR__)."/uploads/fotos/", 0777);
-                    chdir(dirname(__DIR__).'/uploads/fotos/'); // Acessa o diretorio /uploads/fotos/
+                // if (is_dir(dirname(__DIR__).'/uploads/fotos/')){
+                if (is_dir(UPLOAD_PATH) ){
+                    chmod (UPLOAD_PATH, 0777);
+                    chdir(UPLOAD_PATH); // Acessa o diretorio /uploads/fotos/
                     
                     $dir_aluno = preg_replace("(\.|\-)","",$alunoData['cpf']);
                     
-                    if( !file_exists($dir_aluno) ){ // Criando o diretorio /uploads/fotos/cpf_aluno/
+                    if( !is_dir($dir_aluno) ){ // Criando o diretorio /uploads/fotos/cpf_aluno/
                         mkdir($dir_aluno, 0777); // Criando o diretorio /uploads/fotos/cpf_aluno/
+                        echo 'Diretorio do aluno criado com sucesso!<br>';
                     }else{
-                        $linhas = scandir($dir_aluno);
+                        echo 'Diretorio do aluno ja existe!<br>';
+                        $linhas = array_diff(scandir($dir_aluno), ['.', '..']);
+
                         if(sizeof($linhas) != 0){
                             foreach ($linhas as $linha) {
-                                $arq = dirname(__FILE__, 2).'/uploads/fotos/'.$dir_aluno.'/'.$linha;
+                                // $arq = dirname(__FILE__, 2).'/uploads/fotos/'.$dir_aluno.'/'.$linha;
+                                $arq = UPLOAD_PATH . '/' . $dir_aluno . '/' . $linha;
                                 unlink($arq) . '<br>' . PHP_EOL;
                             }
                         }
                     }
                 }
     
-                chdir(dirname(__DIR__,2).'/public');
+                // chdir(dirname(__DIR__,2).'/public');
 
                 // $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.preg_replace("(\.|\-)", "", $alunoData['cpf']).'/'.$nome_imagem;
-                $caminho_imagem = dirname(__DIR__).'/uploads/fotos/'.$dir_aluno.'/'.$nome_imagem;
+                $caminho_imagem = UPLOAD_PATH.'/'.$dir_aluno.'/'.$nome_imagem;
 
     // // Transformando foto em dados (binário)
     // $conteudo = file_get_contents($foto['tmp_name']);
@@ -95,7 +100,7 @@
 
                 // Insere os dados no banco
                 $stmt = $conn->prepare("UPDATE aluno SET foto=:NOME_IMAGEM WHERE codigo=:CODIGO AND cpf=:CPF");
-
+                
                 // $stmt->bindParam(":NOME_IMAGEM",$caminho_imagem);
                 $stmt->bindParam(":NOME_IMAGEM",$nome_imagem);
                 $stmt->bindParam(":CODIGO",$alunoData['codigo']);
