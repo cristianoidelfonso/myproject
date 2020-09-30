@@ -100,6 +100,7 @@
                     "render": function (data) {
                         var resultado =  data.toString().replace(",", "/");
                         var arr = resultado.split('/');
+
                         if(arr[1] !== ''){
                             return `<div class="">
                                         <img width="80px" height="80px" src="./uploads/fotos/${resultado}"/>

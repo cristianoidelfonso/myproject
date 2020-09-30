@@ -44,7 +44,9 @@
     define('CONTROLLER_PATH', realpath(dirname(__FILE__) . '/../controllers') );
     define('EXCEPTION_PATH', realpath(dirname(__FILE__) . '/../exceptions') );
     define('BACKUP_PATH', realpath(dirname(__FILE__) . '/../backups') );
-    define('UPLOAD_PATH', realpath(dirname(__FILE__) . '/../controllers/uploads/fotos') );
+
+    define('UPLOAD_PATH', realpath(CONTROLLER_PATH . '/../uploads/fotos') );
+   //  define('UPLOAD_PATH', realpath(dirname(__FILE__) . '/../controllers/../uploads/fotos') );
     
     // Arquivos
     require_once(realpath(dirname(__FILE__) . '/database.php') );

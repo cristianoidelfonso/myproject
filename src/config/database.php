@@ -107,8 +107,9 @@ class Database {
 
             /*
             Descomente a linha abaixo para proceder.
-            Cuidado onde for executar pois os arquvios são excluídos permamentemente.
-            A função substr() é necessária para pular a string que contém o timestamp e os caracteres separadores ( - ). O real nome do arquivo inicia a partir do 14º caracter.
+            Cuidado onde for executar pois os arquivos são excluídos permamentemente.
+            A função substr() é necessária para pular a string que contém o timestamp e os caracteres separadores ( - ). 
+            O real nome do arquivo inicia a partir do 14º caracter.
             */
             unlink( $dir_base . substr( $v, 13 ) );
          }
