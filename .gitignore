@@ -3,4 +3,5 @@ env.ini
 /src/backups
 /src/uploads
 /src/controllers/uploads
+/public/arquivos
 /public/assets/img/uploads
