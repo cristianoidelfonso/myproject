@@ -100,7 +100,7 @@
         <div style="width: 200px; height: 200px; border: 1px solid;">
             <?php 
                 $path = preg_replace("(\.|\-)","",$a->cpf);
-                echo "<img src='./uploads/fotos/{$path}/{$a->foto}'>";
+                echo "<img class='img-fluid' src='./uploads/fotos/{$path}/{$a->foto}'>";
             ?>
         </div>
 
