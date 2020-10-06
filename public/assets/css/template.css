@@ -24,8 +24,10 @@ header.header{
    position: fixed !important;
    width: 100% !important;
    height: 3em !important;
+   background-color: #777777;
+   /* background-color: #9fa8da; */
    /* background-color: #1976D2; */
-   background-color: #0A2342;
+   /* background-color: #0A2342; */
    align-items: center;
    z-index: 10;
    box-shadow: 
@@ -76,7 +78,7 @@ header.header .dropdown-button{
    justify-content: center;
    align-items: center;
    height: 100%;
-   font-size: 1rem;
+   font-size: .8rem;
    color: #FFF;
    cursor: pointer;
 }
@@ -102,8 +104,8 @@ header.header .dropdown-content a{
    align-items: center;
    text-decoration: none;
    color: #222;
-   padding: 7px;
-   font-size: 1.2rem;
+   padding: .2rem;
+   font-size: .8rem;
 }
 header.header .dropdown-content a:hover{
    background-color: rgba(0,0,0,.08);
@@ -115,8 +117,10 @@ aside.sidebar{
    flex-direction: column;
    align-items: center;
    box-shadow: -5px 0px 25px 1px rgba(0,0,0,.4);
+   background-color: #777777;
+   /* background-color: #8c9eff ; */
    /* background-color: rgba(0,0,0,0.1); */
-   background-color: #253D5B;
+   /* background-color: #253D5B; */
    width: 10rem;
 }
 aside.sidebar .menu{
@@ -136,9 +140,10 @@ aside.sidebar .menu li.nav-item:hover{
    background-color: rgba(0,0,0,.2);
 }
 aside.sidebar .menu li.nav-item a{
-   font-size: 1.2rem;
+   font-size: .9rem;
    color: #FFF;
    text-decoration: none;
+   letter-spacing: .06rem;
 }
 body.hide-sidebar aside.sidebar{
    display: none;
@@ -194,22 +199,22 @@ main.content div.alert{
 main.content .content-title{
    display: flex;
    align-items: center;
-   padding: .5rem 1rem;
+   padding: 0 .6rem;
    border-bottom: 1px solid #CCC;
-   margin-bottom: 1.1rem!important;
+   margin-bottom: .2rem!important;
 }
 main.content .content-title .icon {
-   font-size: 3rem;
+   font-size: 2rem;
 }
 main.content .content-title h1 {
    color: #444;
-   font-size: 1.8rem;
-   font-weight: 300;
+   font-size: 1.2rem;
+   font-weight: 500;
    margin: 0;
 }
 main.content .content-title h2 {
    color: #888;
-   font-size: 1.2rem;
+   font-size: .9rem;
    font-weight: 300;
    margin: 0;
 }
@@ -279,7 +284,7 @@ main.content div.summary-box{
 }
 /*### Fim Relatórios ###*/
 main.content div.card{
-   background-color: rgba(0,0,0,.4);
+   background-color: rgba(0,0,0,.04);
 }
 main.content div.card fieldset{
    border: 1px solid rgba(0,0,0,0.2);
@@ -311,7 +316,7 @@ main.content div.card div.card-body{
 }
 main.content div.card div.card-body .form-control{
    height: calc(1.75rem + 1px);
-   font-size: 0.9rem;
+   font-size: 0.8rem;
    padding: 0rem .5rem;
    letter-spacing: .15em;
    font-weight: bold;
@@ -378,6 +383,7 @@ main.content div.scroll{
 
 main.content div.scroll div.dataTables_wrapper{
    max-height: 48vh;
+   /* max-height: 55vh; */
 }
 
 main.content div.scroll div.dataTables_wrapper#tabela_aluno_wrapper label{
@@ -388,13 +394,31 @@ main.content div.scroll div.dataTables_wrapper#tabela_aluno_wrapper label{
 
 main.content div.scroll div.dataTables_wrapper div.dataTables_filter input{
    width: 20rem;
-   background-color: rgba(0,0,0,.4);
-   color: #000;
+   /* background-color: rgba(0,0,0,.4); */
+   /* color: #000; */
+   border: none;
+   padding-left: .3rem;
 }
 
 table.dataTable tbody th,
 table.dataTable tbody td {
     white-space: nowrap;
+}
+
+table.dataTable tbody td div.foto {
+   border: 1px solid;
+   position: relative;
+}
+
+table.dataTable tbody td div.foto img {
+   margin: 0;
+   background: yellow;
+   position: absolute;
+   width: 4rem;
+   top: 50%;
+   left: 50%;
+   margin-right: -50%;
+   transform: translate(-50%, -50%)
 }
 
 /*############################################################*/
@@ -413,8 +437,10 @@ footer.footer{
    justify-content: center;
    padding-right: 20px;
    font-size: 0.6rem;
+   background-color: #777777;
+   /* background-color: #9fa8da; */
    /* background-color: rgba(1, 2, 7, 1); */
-   background-color: #0A2342;
+   /* background-color: #0A2342; */
    color: #FFF;
    letter-spacing: .1em;
 }

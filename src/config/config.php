@@ -29,10 +29,10 @@
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.uft-8', 'portuguese');
     
    //  Desabilitando as mensagens de erros
-    ini_set('display_errors', 0); //0
-    ini_set('display_startup_errors', 0); //0
-   //  error_reporting(E_ALL); //0
-    error_reporting(0); //0
+    ini_set('display_errors', 1); //0
+    ini_set('display_startup_errors', 1); //0
+    error_reporting(E_ALL); //0
+   //  error_reporting(0); //0
     
     // Constantes gerais
     define('DAILY_TIME', 60 * 60 * 8);

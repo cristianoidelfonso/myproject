@@ -45,7 +45,7 @@
         <div class="dropdown">
             <div class="dropdown-button">
                 <img class="avatar" 
-                    src="<?= "http://www.gravatar.com/avatar.php?gravatar_id="
+                    src="<?= "https://www.gravatar.com/avatar.php?gravatar_id="
                     . md5(strtolower(trim($_SESSION['user']->email))) ?>" alt="user">
                 <span class="ml-3">
                     <?= $_SESSION['user']->nome ?>
@@ -54,12 +54,20 @@
             </div>
             <div class="dropdown-content">
                 <ul class="nav-list">
+                    
+                    <li class="nav-item">
+                        <a href="/">
+                            <i class="icofont-home mr-2"></i>
+                            Home
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="logout.php">
                             <i class="icofont-logout mr-2"></i>
                             Sair
                         </a>
                     </li>
+                    
                 </ul>
             </div>
         </div>

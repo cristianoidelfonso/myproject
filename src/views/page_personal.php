@@ -19,8 +19,9 @@
         }
 
         label.form-control strong {
-            font-size: 1rem;
+            font-size: .75rem;
             color: black;
+            background-color: yellow;
         }
     </style>
 
@@ -100,7 +101,11 @@
         <div style="width: 200px; height: 200px; border: 1px solid;">
             <?php 
                 $path = preg_replace("(\.|\-)","",$a->cpf);
-                echo "<img class='img-fluid' src='./uploads/fotos/{$path}/{$a->foto}'>";
+                if( $a->foto != null ){
+                    echo "<img class='img-fluid' src='./uploads/fotos/{$path}/{$a->foto}'>";
+                }else{
+                    echo "<img class='img-fluid' src='/assets/img/avatar-foto3x4.jpg'>";
+                }
             ?>
         </div>
 

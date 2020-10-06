@@ -56,7 +56,8 @@
         });
 
         $('#tabela_aluno').DataTable({
-            "scrollY": "51vh",
+            // "scrollY": "51vh",
+            "scrollY": "58vh",
             "scrollCollapse": true,
             "paging": true,
             "searching": true,
@@ -102,11 +103,14 @@
                         var arr = resultado.split('/');
 
                         if(arr[1] !== ''){
-                            return `<div class="">
-                                        <img width="80px" height="80px" src="./uploads/fotos/${resultado}"/>
+                            return `<div class="foto">
+                                        <img src="./uploads/fotos/${resultado}"/>
                                     </div>`;
                         }else{
-                            return  `<span class="bg-light text-center">Sem Foto</span>`;
+                            return `<div class="foto">
+                                        <img src="/assets/img/avatar-foto3x4.jpg"/>
+                                    </div>`;
+                            // return  `<span class="bg-light text-center">Sem Foto</span>`;
                         }
                     }
                 },

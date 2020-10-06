@@ -8,10 +8,9 @@
 
     // Se o usuário clicou no botão cadastrar efetua as ações
     if (isset($_POST['cadastrar'])) {
-    
-        // Conexão com o banco de dados
-        $conn = new PDO("mysql:dbname=db_uaitec;host=localhost","root","") 
-                or die("Problemas na conexão com o banco de dados.");
+        
+        // Conexão com o banco de dados do servidor local
+        $conn = new PDO("mysql:dbname=db_uaitec;host=localhost","root","") or die("Problemas na conexão com o banco de dados.");
 
         $aluno = Aluno::getOne(['codigo' => $id_aluno], 'codigo,nome,cpf,foto,dataNasc,sexo,nomeMae');
         $alunoData = $aluno->getValues();
