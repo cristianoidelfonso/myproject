@@ -8,6 +8,6 @@
     </div>
     <div class="message">
         <?php include(TEMPLATE_PATH . "/messages.php"); ?>
-        <?= isset($message) ? "<script>$('#message').fadeOut(6000);</script>" : ''; ?>
+        <?= isset($message) ? "<script>$('#message').fadeOut(10000);</script>" : ''; ?>
     </div>
 </div>

@@ -23,7 +23,7 @@
 
 <main class="content bg-info"><!-- Tela que apresenta todos os cursos -->
     <?php
-        requireValidSession(true);
+        requireValidSession();
         // isset($message) ? "<script>$('#message').fadeOut(4500);</script>" : ''; 
         renderTitle('Adicionar arquivos', 'Adicione arquivos dos alnunos em formato pdf', 'icofont-attachment-alt-1');
         

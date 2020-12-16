@@ -1,6 +1,7 @@
 <?php
     session_start();
-    requireValidSession(true);
+    requireValidSession();
+    // requireValidSession(true);
     
     // $exception = null;
     

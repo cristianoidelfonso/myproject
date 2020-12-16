@@ -234,7 +234,7 @@ main.content div.message a{
 }
 main.content div.message .alert{
    position: relative;
-   padding: .75rem 1.25rem;
+   padding: .30rem 1.25rem;
    margin-bottom: 0rem;
    border: 1px solid transparent;
    border-radius: .25rem;
@@ -353,8 +353,8 @@ main.content div.card div.card-footer button{
    margin: 0rem 2rem;
 }
 main.content div.card div.card-body button{
-   margin: 0rem 1rem;
-   padding: .38rem 1.8rem;
+   margin: 0rem .4rem;
+   padding: .3rem;
    letter-spacing: .1rem;
 }
 main.content form div.card-footer div.buttons{
@@ -419,6 +419,18 @@ table.dataTable tbody td div.foto img {
    left: 50%;
    margin-right: -50%;
    transform: translate(-50%, -50%)
+}
+
+.dataTables_wrapper .dataTables_paginate {
+   padding-top: 0.1rem !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+   padding: 0.1rem .1rem !important;
+   margin-left: 2px !important;
+}
+
+.dataTables_wrapper .dataTables_info {
+   padding-top: 0.155em !important;
 }
 
 /*############################################################*/

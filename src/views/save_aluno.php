@@ -3,7 +3,8 @@
         requireValidSession();
         // renderTitle('Cadastro de Alunos', 'Mantenha os dados dos alunos atualizados', 'icofont-group-students');
 
-        include(TEMPLATE_PATH . "/messages.php");   
+        include(TEMPLATE_PATH . "/messages.php"); 
+          
     ?>
     <div class="card">
         <form action="#" method="post" accept-charset="utf-8">
@@ -319,18 +320,27 @@
                                 <option value="03 - Incl. Digital" <?= (isset($sala) ? ($sala === '03 - Incl. Digital' ? 'SELECTED' : '') : '') ?>>03 - Incl. Digital</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label hidden>Instituição</label>
+                            <select id="instituicao" class="form-control" name="instituicao" required>
+                                <option value="">Instituição</option>
+                                <option value="uaitec" <?= (isset($instituicao) ? ($instituicao === 'uaitec' ? 'SELECTED' : '') : '') ?>>UAITEC</option>
+                                <option value="ifnmg" <?= (isset($instituicao) ? ($instituicao === 'ifnmg' ? 'SELECTED' : '') : '') ?>>IFNMG</option>
+                                <option value="uab" <?= (isset($instituicao) ? ($instituicao === 'uab' ? 'SELECTED' : '') : '') ?>>UAB</option>
+                            </select>
+                        </div>
                         <!-- Funcionário responsável pelo cadastro -->
-                        <div class="form-group col-md-4 offset-md-1">
+                        <div class="form-group col-md-4 ">
                             <label class="funcionario">
                                 <span>Func. Respon.: </span>
                                 <input type="text" id="usuario" class="form-control funcionario" name="usuario" 
                                 value="<?= isset($usuario) ? $usuario : $_SESSION['user']->nome ?>" readonly>
                             </label>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                              <div class="buttons">
-                                <button class="btn btn-primary btn-md">Salvar</button>
-                                <a href="/alunos.php" class="btn btn-dark btn-md">Cancelar</a>
+                                <button class="btn btn-primary btn-sm">Salvar</button>
+                                <a href="/alunos.php" class="btn btn-dark btn-sm">Cancelar</a>
                             </div>     
                         </div>
                     </div>

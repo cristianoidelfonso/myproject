@@ -110,7 +110,7 @@
                     // Faz o upload da imagem para seu respectivo caminho
                     move_uploaded_file($foto['tmp_name'], $caminho_imagem);
                     echo 'Foto do aluno atualizada com sucesso';
-                    header('Refresh: 3; url=/');
+                    header('Refresh: 1; url=/alunos.php');
                 }else{
                     echo 'ERROR<br>';
                     die(print_r($stmt->errorInfo(), true));

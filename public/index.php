@@ -13,6 +13,7 @@
 
     if($uri === '/' || $uri === '' ||  $uri === '/index.php') {
         //$uri = '/login.php';
+        // $uri = '/splash.php';
         $uri = '/day_records.php';
     }
     

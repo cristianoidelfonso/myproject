@@ -19,7 +19,6 @@
     if (isset($message)) {
         $alertType = $message['type'] === 'error' ? 'danger' : 'success';
     }
-
 ?>
 
 <?php if (isset($message)) : ?>

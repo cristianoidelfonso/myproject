@@ -57,7 +57,7 @@
 
         $('#tabela_aluno').DataTable({
             // "scrollY": "51vh",
-            "scrollY": "58vh",
+            "scrollY": "61vh",
             "scrollCollapse": true,
             "paging": true,
             "searching": true,
@@ -67,7 +67,6 @@
                     '<option value="10">10</option>' +
                     '<option value="25">25</option>' +
                     '<option value="50">50</option>' +
-                    '<option value="-1">Todos</option>' +
                     '</select> usuarios',
                 "decimal": ",",
                 "thousands": ".",
@@ -155,12 +154,12 @@
                                         <i class="icofont-attachment"></i>
                                     </button>
                                 </form>
-                                <?php //if ($user->isAdmin) : ?> 
+                                <?php if ($user->isAdmin) : ?> 
                                 <a href="?delete=${data['codigo']}" 
                                     class="btn btn-light rounded-circle mr-1 update" title="Excluir">
                                     <i class="icofont-trash"></i>
                                 </a>
-                                <?php //endif ?>
+                                <?php endif ?>
                                 </div>`
                     }
                 }
